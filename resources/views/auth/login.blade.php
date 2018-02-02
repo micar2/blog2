@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Blog | Log in</title>
+    <title>{{ config('app.name') }} | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -30,16 +30,16 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="/">Admininstración <b>Blog</b></a>
+        <a href="/">@lang('auth.login') <b>Blog</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">@lang('auth.singin')</p>
 
-        <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }} has-feedback">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="@lang('validation.attributes.email')" required autofocus>
                 @if ($errors->has('email'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -48,7 +48,7 @@
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }} has-feedback">
-                <input id="password" type="password" class="form-control" name="password" required>
+                <input id="password" type="password" class="form-control" name="password" placeholder="@lang('validation.attributes.password')" required>
                 @if ($errors->has('password'))
                     <span class="help-block">
                         <strong>{{ $errors->first('password') }}</strong>
@@ -60,19 +60,19 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> @lang('auth.remember')
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">@lang('auth.singin_button')</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        <a href="{{ route('password.request') }}">I forgot my password</a><br>
+        <a href="{{ route('password.request') }}">@lang('auth.forgot')</a><br>
 
     </div>
     <!-- /.login-box-body -->

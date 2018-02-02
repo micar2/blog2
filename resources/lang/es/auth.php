@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,12 +12,11 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'login' =>  'Log in',
-    'singin' => 'Sing in to start your session',
-    'remember' => 'Remember Me',
-    'singin_button' => 'Sing In',
-    'forgot' => 'I forgot my password',
-
+    'failed' => 'Estas credenciales no coinciden con nuestros registros.',
+    'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
+    'login' =>  'Inicio de Sesión',
+    'singin' => 'Identifícate para iniciar sesión',
+    'remember' => 'Recuerdame',
+    'singin_button' => 'Entrar',
+    'forgot' => 'Olvidé mi contraseña',
 ];
