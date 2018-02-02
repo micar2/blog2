@@ -16,3 +16,6 @@ Route::get('/', function () {
     return view('welcome', compact('posts'));
 });
 
+Route::get('admin', function () {
+    return view('admin.dashboard');
+});
