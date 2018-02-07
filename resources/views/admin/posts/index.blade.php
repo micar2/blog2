@@ -6,7 +6,7 @@
         <small>Listado</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ route('admin.home') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Inicio</a></li>
         <li class="active">Posts</li>
     </ol>
 @endsection
