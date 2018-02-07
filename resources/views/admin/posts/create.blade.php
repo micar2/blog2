@@ -14,7 +14,7 @@
 
 @section('content')
     <div class="row">
-        <form action="">
+        <form action="{{ route('admin.posts.store') }}" method="POST">
             {{ csrf_field() }}
             <div class="col-md-8">
                 <div class="box box-primary">
@@ -42,7 +42,8 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datepicker">
+                                <input type="text" name="published_at"
+                                       class="form-control pull-right" id="datepicker">
                             </div>
                         </div>
                         <div class="form-group">
@@ -56,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label>Etiquetas</label>
-                            <select name="tags"
+                            <select name="tags[]"
                                     class="form-control select2" multiple="multiple"
                                     data-placeholder="Selecciona una o más etiquetas"
                                     style="width: 100%;">

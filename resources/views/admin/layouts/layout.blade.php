@@ -258,6 +258,12 @@ desired effect
         <!-- Main content -->
         <section class="content container-fluid">
 
+            @if (session()->has('flash'))
+                <div class="alert alert-success">
+                    {{ session('flash') }}
+                </div>
+            @endif
+
             @yield('content')
 
         </section>
