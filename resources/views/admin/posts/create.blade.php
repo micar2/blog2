@@ -37,9 +37,30 @@
                 <div class="box box-primary">
                     <div class="box-body">
                         <div class="form-group">
+                            <label>Fecha de publicación:</label>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepicker">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Categorías</label>
+                            <select name="category_id" class="form-control">
+                                <option value="">Selecciona una categoría</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="">Extracto de la publicación</label>
                             <textarea name="excerpt" class="form-control"
                                       ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>
                         </div>
                     </div>
                 </div>
@@ -47,3 +68,16 @@
         </form>
     </div>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+@endpush
+
+@push('scripts')
+    <script src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $('#datepicker').datepicker({
+            autoclose: true
+        })
+    </script>
+@endpush
