@@ -28,6 +28,25 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'title' => 'required'
+        ]);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->slug = str_slug($request->title);
+        $post->save();
+
+        return redirect()->route('admin.posts.edit', $post);
+    }
+
+    public function edit(Post $post)
+    {
+        return view('admin.posts.edit', compact('post'));
+    }
+/*
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'title' => 'required',
             'body'  => 'required',
             'category_id' =>'required',
@@ -49,4 +68,6 @@ class PostsController extends Controller
 
         return back()->with('flash', 'La publicación ha sido creada');
     }
+*/
+
 }
