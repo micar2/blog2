@@ -25,4 +25,9 @@ class Post extends Model
             ->where('published_at','<',Carbon::now())
             ->latest('published_at');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

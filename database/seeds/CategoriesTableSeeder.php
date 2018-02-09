@@ -21,5 +21,13 @@ class CategoriesTableSeeder extends Seeder
         $category = new Category;
         $category->name = 'Categoría 2';
         $category->save();
+
+        $category = new Category;
+        $category->name = 'Categoría 3';
+        $category->save();
+
+        $category = new Category;
+        $category->name = 'Categoría 4';
+        $category->save();
     }
 }
