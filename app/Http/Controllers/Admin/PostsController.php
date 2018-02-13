@@ -68,7 +68,7 @@ class PostsController extends Controller
 
         $post->tags()->sync($request->tags);
 
-        return back()->with('flash', 'La publicación ha sido creada');
+        return redirect()->route('admin.posts.edit', $post)->with('flash', 'La publicación ha sido guardada');
     }
 /*
     public function store(Request $request)

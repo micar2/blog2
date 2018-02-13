@@ -46,7 +46,7 @@
                                     <i class="fa fa-calendar"></i>
                                 </div>
                                 <input type="text" name="published_at"
-                                       value="{{ old('published_at', $post->published_at ? $post->published_at->format('d/m/Y') : null) }}"
+                                       value="{{ old('published_at', $post->published_at ? $post->published_at->format('m/d/Y') : null) }}"
                                        class="form-control pull-right"
                                        id="datepicker">
                             </div>
@@ -82,6 +82,9 @@
                             >{{ old('excerpt', $post->excerpt) }}</textarea>
                             {!! $errors->first('excerpt', '<span class="help-block">:message</span>') !!}
                         </div>
+                        <div class="form-goup">
+                            <div class="dropzone"></div>
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">Guardar Publicación</button>
                         </div>
@@ -93,11 +96,13 @@
 @endsection
 
 @push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/dropzone.css">
     <link rel="stylesheet" href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/adminlte/bower_components/select2/dist/css/select2.min.css">
 @endpush
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
     <script src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="/adminlte/bower_components/ckeditor/ckeditor.js"></script>
     <script src="/adminlte/bower_components/select2/dist/js/select2.full.min.js"></script>
@@ -107,5 +112,14 @@
         })
         CKEDITOR.replace('editor')
         $('.select2').select2()
+
+        new Dropzone('.dropzone', {
+            url: '/admin/posts/{{ $post->slug }}/photos',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            dictDefaultMessage: 'Arrastra aquí tus fotos para subirlas'
+        });
+        Dropzone.autoDiscover = false;
     </script>
 @endpush
