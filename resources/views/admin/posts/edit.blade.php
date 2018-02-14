@@ -117,7 +117,7 @@
             url: '/admin/posts/{{ $post->slug }}/photos',
             paramName: 'photo',
             acceptedFiles: 'image/*',
-            maxFilesize: .2,
+            maxFilesize: 2,
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
