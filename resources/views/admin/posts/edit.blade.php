@@ -13,6 +13,7 @@
 @endsection
 
 @section('content')
+    @if ($post->photos->count())
     <div class="row">
         <div class="col-md-12">
             <div class="box box-primary">
@@ -34,6 +35,7 @@
             </div>
         </div>
     </div>
+    @endif
     <div class="row">
         <form action="{{ route('admin.posts.update', $post) }}" method="POST">
             {{ csrf_field() }} {{ method_field('PUT') }}
