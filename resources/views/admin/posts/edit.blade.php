@@ -14,6 +14,27 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row">
+                        @foreach($post->photos as $photo)
+                            <form action="{{ route('admin.photos.destroy', $photo) }}" method="POST">
+                                {{ csrf_field() }} {{ method_field('DELETE') }}
+                                <div class="col-md-2">
+                                    <button class="btn btn-danger btn-xs" style="position: absolute">
+                                        <i class="fa fa-remove"></i>
+                                    </button>
+                                    <img src="{{ $photo->url }}" class="img-responsive">
+                                </div>
+                            </form>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <form action="{{ route('admin.posts.update', $post) }}" method="POST">
             {{ csrf_field() }} {{ method_field('PUT') }}
             <div class="col-md-8">
