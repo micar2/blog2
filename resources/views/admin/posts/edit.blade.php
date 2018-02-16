@@ -82,7 +82,7 @@
                         </div>
                         <div class="form-group {{ $errors->has('category_id') ? 'has-error' : '' }}">
                             <label for="">Categorías</label>
-                            <select name="category_id" class="form-control">
+                            <select name="category_id" class="form-control select2">
                                 <option value="">Selecciona una categoría</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}"
@@ -140,7 +140,9 @@
             autoclose: true
         })
         CKEDITOR.replace('editor')
-        $('.select2').select2()
+        $('.select2').select2({
+            tags: true
+        })
 
         var myDropzone = new Dropzone('.dropzone', {
             url: '/admin/posts/{{ $post->slug }}/photos',

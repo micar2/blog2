@@ -61,11 +61,17 @@ class PostsController extends Controller
         $post->iframe = $request->iframe;
         $post->excerpt = $request->excerpt;
         $post->published_at = $request->published_at ? Carbon::parse($request->published_at) : null;
-        $post->category_id = $request->category_id;
+        $post->category_id = Category::find($cat = $request->category_id)
+                            ? $cat
+                            : Category::create(['name' => $cat])->id;
 
         $post->save();
 
-        $post->tags()->sync($request->tags);
+        foreach ($request->tags as $tag) {
+            $tags[]= Tag::find($tag) ? $tag : Tag::create(['name' => $tag])->id;
+        }
+
+        $post->tags()->sync($tags);
 
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'La publicación ha sido guardada');
     }
