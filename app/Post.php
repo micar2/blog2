@@ -24,6 +24,12 @@ class Post extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function setTitleAttribute($title)
+    {
+        $this->attributes['title'] = $title;
+        $this->attributes['slug'] = str_slug($title);
+    }
+
     public function scopePublished($query)
     {
         $query->whereNotNull('published_at')

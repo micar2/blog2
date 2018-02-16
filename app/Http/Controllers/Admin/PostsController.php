@@ -33,7 +33,6 @@ class PostsController extends Controller
 
         $post = new Post;
         $post->title = $request->title;
-        $post->slug = str_slug($request->title);
         $post->save();
 
         return redirect()->route('admin.posts.edit', $post);
@@ -58,7 +57,6 @@ class PostsController extends Controller
         ]);
 
         $post->title = $request->title;
-        $post->slug = str_slug($request->title);
         $post->body = $request->body;
         $post->iframe = $request->iframe;
         $post->excerpt = $request->excerpt;
