@@ -56,6 +56,12 @@
                                       placeholder="Escribe el contenido de la publicación">{{ old('body', $post->body) }}</textarea>
                             {!! $errors->first('body', '<span class="help-block">:message</span>') !!}
                         </div>
+                        <div class="form-group {{ $errors->has('iframe') ? 'has-error' : '' }}">
+                            <label>Audio o vídeo embebido de la publicación</label>
+                            <textarea name="iframe" rows="2" class="form-control"
+                            >{{ old('iframe', $post->iframe) }}</textarea>
+                            {!! $errors->first('iframe', '<span class="help-block">:message</span>') !!}
+                        </div>
                     </div>
                 </div>
             </div>
