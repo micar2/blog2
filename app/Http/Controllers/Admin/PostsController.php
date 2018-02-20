@@ -55,31 +55,13 @@ class PostsController extends Controller
 
         return redirect()->route('admin.posts.edit', $post)->with('flash', 'La publicación ha sido guardada');
     }
-/*
-    public function store(Request $request)
+
+    public function destroy(Post $post)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'body'  => 'required',
-            'category_id' =>'required',
-            'tags' => 'required',
-            'excerpt' => 'required'
-        ]);
+        $post->delete();
 
-        $post = new Post;
-        $post->title = $request->title;
-        $post->slug = str_slug($request->title);
-        $post->body = $request->body;
-        $post->excerpt = $request->excerpt;
-        $post->published_at = $request->published_at ? Carbon::parse($request->published_at) : null;
-        $post->category_id = $request->category_id;
-
-        $post->save();
-
-        $post->tags()->attach($request->tags);
-
-        return back()->with('flash', 'La publicación ha sido creada');
+        return redirect()->route('admin.posts.index')
+                ->with('flash', 'La publicación ha sido eliminada');
     }
-*/
 
 }
