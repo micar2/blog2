@@ -83,5 +83,4 @@
             })
         })
     </script>
-    @include('admin.posts.create')
 @endpush

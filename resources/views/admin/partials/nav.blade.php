@@ -20,10 +20,17 @@
                 </a>
             </li>
             <li>
-                <a href="#" data-toggle="modal" data-target="#myModal">
-                    <i class="fa fa-pencil"></i>
-                    Crear un post
-                </a>
+                @if (request()->is('admin/posts/*'))
+                    <a href="{{ route('admin.posts.index', '#create') }}">
+                        <i class="fa fa-pencil"></i>
+                        Crear un post
+                    </a>
+                @else
+                    <a href="#" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-pencil"></i>
+                        Crear un post
+                    </a>
+                @endif
             </li>
         </ul>
     </li>
