@@ -19,15 +19,7 @@
 <header class="space-inter">
     <div class="container container-flex space-between">
         <figure class="logo"><img src="/img/logo.png" alt=""></figure>
-        <nav class="custom-wrapper" id="menu">
-            <div class="pure-menu"></div>
-            <ul class="container-flex list-unstyled">
-                <li><a href="/" class="text-uppercase">Home</a></li>
-                <li><a href="#" class="text-uppercase">About</a></li>
-                <li><a href="#" class="text-uppercase">Archive</a></li>
-                <li><a href="#" class="text-uppercase">Contact</a></li>
-            </ul>
-        </nav>
+        @include('partials.nav')
     </div>
 </header>
 
