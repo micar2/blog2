@@ -57,6 +57,11 @@ class Post extends Model
         $this->save();
     }
 
+    public function isPublished()
+    {
+        return ! is_null($this->published_at) && $this->published_at < today();
+    }
+
     public function setPublishedAtAttribute($published_at)
     {
         $this->attributes['published_at'] = $published_at ? Carbon::parse($published_at) : null;
