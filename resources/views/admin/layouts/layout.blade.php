@@ -188,7 +188,7 @@ desired effect
                                 <img src="/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    {{ auth()->user()->name }}
+                                    {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
                                     <small>Desde {{ auth()->user()->created_at->format('d/M/Y') }}</small>
                                 </p>
                             </li>
