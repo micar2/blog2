@@ -1,5 +1,6 @@
 <?php
 
+use Spatie\Permission\Models\Role;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -13,21 +14,29 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        Role::truncate();
         User::truncate();
         //Storage::disk('public')->deleteDirectory('');
 
-        $user = new User;
-        $user->name = 'Carlos';
-        $user->email = 'iescierva.carlos@gmail.com';
-        $user->password = bcrypt('123456');
+        $adminRole = Role::create(['name' => 'Admin']);
+        $writerRole = Role::create(['name' => 'Writer']);
 
-        $user->save();
+        $admin = new User;
+        $admin->name = 'Carlos';
+        $admin->email = 'iescierva.carlos@gmail.com';
+        $admin->password = bcrypt('123456');
 
-        $user = new User;
-        $user->name = 'Antonio';
-        $user->email = 'iescierva.antonio@gmail.com';
-        $user->password = bcrypt('123456');
+        $admin->save();
 
-        $user->save();
+        $admin->assignRole($adminRole);
+
+        $writer = new User;
+        $writer->name = 'Antonio';
+        $writer->email = 'iescierva.antonio@gmail.com';
+        $writer->password = bcrypt('123456');
+
+        $writer->save();
+
+        $writer->assignRole($writerRole);
     }
 }
