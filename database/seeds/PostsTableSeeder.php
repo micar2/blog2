@@ -48,7 +48,7 @@ class PostsTableSeeder extends Seeder
         $post->body = '<p>Contenido de mi tercer post</p>';
         $post->published_at = Carbon::now()->subDays(2);
         $post->category_id = 1;
-        $post->user_id = 1;
+        $post->user_id = 2;
         $post->save();
 
         $post->tags()->attach(['3', '4']);
@@ -60,7 +60,7 @@ class PostsTableSeeder extends Seeder
         $post->body = '<p>Contenido de mi cuarto post</p>';
         $post->published_at = Carbon::now()->subDays(1);
         $post->category_id = 2;
-        $post->user_id = 1;
+        $post->user_id = 2;
         $post->save();
 
         $post->tags()->attach(['1', '4']);
