@@ -99,4 +99,17 @@ class Post extends Model
     {
         return 'slug';
     }
+
+    public function viewType($view = '')
+    {
+        if ($this->photos->count() === 1) {
+            return 'posts.photo';
+        } elseif ($this->photos->count() > 1) {
+            return 'posts.carousel' . $view;
+        } elseif ($this->iframe) {
+            return'posts.iframe';
+        } else {
+            return 'posts.text';
+        }
+    }
 }
