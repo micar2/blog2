@@ -14,6 +14,9 @@ class TagsTableSeeder extends Seeder
     {
         Tag::truncate();
 
+        factory(Tag::class,20)->create();
+
+        /*
         $tag = new Tag;
         $tag->name = 'Etiqueta 1';
         $tag->save();
@@ -29,6 +32,7 @@ class TagsTableSeeder extends Seeder
         $tag = new Tag;
         $tag->name = 'Etiqueta 4';
         $tag->save();
+        */
 
     }
 }

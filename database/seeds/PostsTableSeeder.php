@@ -17,6 +17,16 @@ class PostsTableSeeder extends Seeder
         Storage::disk('public')->deleteDirectory('posts');
         Post::truncate();
 
+        factory(Post::class, 200)->create()->each(function ($post){
+            $post->slug = str_slug($post->title);
+            $post->save();
+            $numberTag1 = rand(1,10);
+            $numberTag2 = rand(11,20);
+            $post->tags()->attach(compact('numberTag1', 'numberTag2'));
+
+        });
+
+        /*
         $post = new Post;
         $post->title = 'Mi primer post';
         $post->slug = str_slug('Mi primer post');
@@ -64,5 +74,6 @@ class PostsTableSeeder extends Seeder
         $post->save();
 
         $post->tags()->attach(['1', '4']);
+        */
     }
 }

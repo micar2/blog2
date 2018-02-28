@@ -22,28 +22,20 @@ class UsersTableSeeder extends Seeder
 
         $adminRole = Role::create(['name' => 'Admin']);
         $writerRole = Role::create(['name' => 'Writer']);
+        $editorRole = Role::create(['name' => 'Editor']);
 
         $viewPostsPermission = Permission::create(['name' => 'View posts']);
         $viewPostsPermission = Permission::create(['name' => 'Create posts']);
         $viewPostsPermission = Permission::create(['name' => 'Update posts']);
         $viewPostsPermission = Permission::create(['name' => 'Delete posts']);
 
-        $admin = new User;
-        $admin->name = 'Carlos';
-        $admin->email = 'iescierva.carlos@gmail.com';
-        $admin->password = bcrypt('123456');
+        factory(User::class)->create([
+            'name' => 'Carlos',
+            'email' => 'iescierva.carlos@gmail.com'
+        ])->assignRole($adminRole);
 
-        $admin->save();
+        factory(User::class,30)->create()->each->assignRole($writerRole);
 
-        $admin->assignRole($adminRole);
-
-        $writer = new User;
-        $writer->name = 'Antonio';
-        $writer->email = 'iescierva.antonio@gmail.com';
-        $writer->password = bcrypt('123456');
-
-        $writer->save();
-
-        $writer->assignRole($writerRole);
+        factory(User::class,19)->create()->each->assignRole($editorRole);
     }
 }
